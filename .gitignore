@@ -1,0 +1,4 @@
+public/**/*.js
+public/**/*.cjs
+public/**/*.js.map
+public/**/*.cjs.map

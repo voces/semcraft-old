@@ -1,0 +1,11 @@
+#!/bin/bash
+
+trap killgroup SIGINT
+
+killgroup(){
+  kill 0
+}
+
+deno bundle --watch --config tsconfig.json --import-map importMap.json src/index.ts public/index.js &
+deno bundle --watch --config tsconfig.json --import-map importMap.json src/server.ts public/server.js &
+wait

@@ -1,0 +1,6 @@
+{
+	"imports": {
+		"webcraft": "https://esm.sh/v54/webcraft@5.0.0",
+		"std/": "https://deno.land/std@0.113.0/"
+	}
+}
