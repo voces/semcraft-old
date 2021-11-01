@@ -1,6 +1,10 @@
 {
 	"imports": {
-		"webcraft": "https://esm.sh/v54/webcraft@5.0.0",
+		"webcraft": "../webcraft/dist/index.js",
+		"marked": "https://esm.sh/v55/marked@3.0.8",
+		"notextures": "https://esm.sh/v55/notextures@5.0.0",
+		"preact": "https://esm.sh/v55/preact@10.5.15",
+		"webcraft2": "https://esm.sh/v55/webcraft@5.0.0",
 		"std/": "https://deno.land/std@0.113.0/"
 	}
 }
