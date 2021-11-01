@@ -1,9 +1,5 @@
 {
 	"version": "1.0.0",
-	"scripts": {
-		"build": "deno run --unstable --allow-read --allow-write --allow-net --import-map scripts/importMap.json scripts/build.ts",
-		"dev": "deno run --unstable --allow-read --allow-write --allow-net --import-map scripts/importMap.json scripts/dev.ts"
-	},
 	"main": "public/server.js",
 	"type": "module"
 }
