@@ -136,37 +136,37 @@ const materialsBitmap = Array(2 ** 9)
 
 const zeroes = (count: number): number[] => Array(count).fill(0);
 
-export const makeTerrain = () => {
-  const entity = new Entity();
+export class Terrain extends Entity {
+  constructor() {
+    super("terrain");
 
-  const obj = new MaterialGrid(WIDTH, HEIGHT);
+    const obj = new MaterialGrid(WIDTH, HEIGHT);
 
-  const grid = [
-    ...Array(47).fill(0).map(() => zeroes(99)),
-    [...zeroes(47), 0, 1, 1, 1, 0, ...zeroes(47)],
-    [...zeroes(47), 1, 0, 1, 0, 1, ...zeroes(47)],
-    [...zeroes(47), 0, 1, 1, 1, 0, ...zeroes(47)],
-    [...zeroes(47), 0, 1, 0, 1, 0, ...zeroes(47)],
-    [...zeroes(47), 1, 1, 1, 1, 1, ...zeroes(47)],
-    ...Array(47).fill(0).map(() => zeroes(99)),
-  ];
+    const grid = [
+      ...Array(47).fill(0).map(() => zeroes(99)),
+      [...zeroes(47), 0, 1, 1, 1, 0, ...zeroes(47)],
+      [...zeroes(47), 1, 0, 1, 0, 1, ...zeroes(47)],
+      [...zeroes(47), 0, 1, 1, 1, 0, ...zeroes(47)],
+      [...zeroes(47), 0, 1, 0, 1, 0, ...zeroes(47)],
+      [...zeroes(47), 1, 1, 1, 1, 1, ...zeroes(47)],
+      ...Array(47).fill(0).map(() => zeroes(99)),
+    ];
 
-  for (let y = 0; y < HEIGHT; y++) {
-    for (let x = 0; x < WIDTH; x++) {
-      const matIdx = ((grid[y - 1]?.[x - 1] ?? 0) * TOPLEFT) +
-        (grid[y - 1]?.[x] ?? 0) * TOP +
-        (grid[y - 1]?.[x + 1] ?? 0) * TOPRIGHT +
-        (grid[y][x - 1] ?? 0) * LEFT +
-        (grid[y][x] ?? 0) * CENTER +
-        (grid[y][x + 1] ?? 0) * RIGHT +
-        (grid[y + 1]?.[x - 1] ?? 0) * BOTLEFT +
-        (grid[y + 1]?.[x] ?? 0) * BOT +
-        (grid[y + 1]?.[x + 1] ?? 0) * BOTRIGHT;
-      obj.setMaterial(x, y, materialsBitmap[matIdx]);
+    for (let y = 0; y < HEIGHT; y++) {
+      for (let x = 0; x < WIDTH; x++) {
+        const matIdx = ((grid[y - 1]?.[x - 1] ?? 0) * TOPLEFT) +
+          (grid[y - 1]?.[x] ?? 0) * TOP +
+          (grid[y - 1]?.[x + 1] ?? 0) * TOPRIGHT +
+          (grid[y][x - 1] ?? 0) * LEFT +
+          (grid[y][x] ?? 0) * CENTER +
+          (grid[y][x + 1] ?? 0) * RIGHT +
+          (grid[y + 1]?.[x - 1] ?? 0) * BOTLEFT +
+          (grid[y + 1]?.[x] ?? 0) * BOT +
+          (grid[y + 1]?.[x + 1] ?? 0) * BOTRIGHT;
+        obj.setMaterial(x, y, materialsBitmap[matIdx]);
+      }
     }
+
+    new ThreeObjectComponent(this, obj);
   }
-
-  new ThreeObjectComponent(entity, obj);
-
-  return entity;
-};
+}
