@@ -1,11 +1,11 @@
 {
-	"imports": {
-		"marked": "https://esm.sh/marked@3.0.8?pin=v58",
-		"notextures": "https://esm.sh/notextures@5.0.1?pin=v58",
-		"preact": "https://esm.sh/preact@10.5.15?pin=v58",
-		"preact/hooks": "https://esm.sh/preact@10.5.15/hooks?pin=v58",
-		"std/": "https://deno.land/std@0.113.0/",
-		"three": "https://esm.sh/three@0.134.0?pin=v58",
-		"webcraft": "https://esm.sh/webcraft@5.0.3?pin=v58"
-	}
+  "imports": {
+    "marked": "https://esm.sh/marked@3.0.8?pin=v58",
+    "notextures": "https://esm.sh/notextures@5.0.1?pin=v58",
+    "preact": "https://esm.sh/preact@10.5.15?pin=v58",
+    "preact/hooks": "https://esm.sh/preact@10.5.15/hooks?pin=v58",
+    "std/": "https://deno.land/std@0.113.0/",
+    "three": "https://esm.sh/three@0.134.0?pin=v58",
+    "webcraft": "https://esm.sh/webcraft@5.1.0?pin=v58"
+  }
 }
