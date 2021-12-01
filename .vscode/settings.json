@@ -1,6 +1,11 @@
 {
-	"deno.enable": true,
-	"deno.lint": true,
-	"deno.unstable": true,
-	"deno.importMap": "./importMap.json"
+  "deno.enable": true,
+  "deno.lint": true,
+  "deno.unstable": true,
+  "deno.importMap": "./importMap.json",
+  "deno.config": "./deno.jsonc",
+  "editor.defaultFormatter": "denoland.vscode-deno",
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  }
 }

@@ -1,13 +1,7 @@
-import {
-  Game,
-  logLine,
-  PathingSystem,
-  Terrain,
-  ThreeObjectComponent,
-} from "webcraft";
+import { Game, logLine, PathingSystem } from "webcraft";
 import { Network } from "./Network.ts";
 import { withSemcraft } from "./semcraftContext.ts";
-import { terrain } from "./terrain.ts";
+import { makeTerrain } from "./Terrain.ts";
 
 export class Semcraft extends Game {
   readonly isSemcraft = true;
@@ -17,16 +11,17 @@ export class Semcraft extends Game {
 
     withSemcraft(this, () => {
       logLine("Creating Semcraft");
-      this.terrain = new Terrain(terrain);
-      this.terrain.get(ThreeObjectComponent)[0]!.object.scale.z = 0.5;
-      this.add(this.terrain);
+
+      this.add(makeTerrain());
+
       this.graphics.panTo(
-        { x: terrain.width / 2, y: terrain.height / 2  },
+        { x: 0, y: 1 },
         0,
       );
+
       this.pathingSystem = new PathingSystem({
-        pathing: terrain.pathing,
-        layers: terrain.pathingCliffs.slice().reverse(),
+        pathing: Array(99).fill(0).map(() => Array(99).fill(0)),
+        layers: Array(99).fill(0).map(() => Array(99).fill(0)),
         resolution: 2,
       }).addToApp(this);
     });
