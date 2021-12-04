@@ -4,6 +4,7 @@ import {
   Material,
   MeshPhongMaterial,
   NearestFilter,
+  Object3D,
   RepeatWrapping,
   Texture,
 } from "three";
@@ -137,6 +138,8 @@ const materialsBitmap = Array(2 ** 9)
 const zeroes = (count: number): number[] => Array(count).fill(0);
 
 export class Terrain extends Entity {
+  readonly isTerrain = true;
+
   constructor() {
     super("terrain");
 
@@ -166,6 +169,10 @@ export class Terrain extends Entity {
         obj.setMaterial(x, y, materialsBitmap[matIdx]);
       }
     }
+
+    obj.receiveShadow = true;
+
+    (obj as Object3D & { entity?: Entity }).entity = this;
 
     new ThreeObjectComponent(this, obj);
   }

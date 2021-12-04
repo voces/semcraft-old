@@ -1,7 +1,9 @@
-import { Unit } from "webcraft";
+import type { UnitProps } from "webcraft";
+import { PathingComponent, Unit } from "webcraft";
 
 export class Character extends Unit {
-  //   constructor(props: UnitProps) {
-  //     super({ x: 0, y: 0 });
-  //   }
+  constructor(props: UnitProps) {
+    super(props);
+    new PathingComponent(this);
+  }
 }

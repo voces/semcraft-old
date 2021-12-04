@@ -11,8 +11,9 @@ import {
 } from "webcraft";
 import { Network, NetworkEventCallbacks } from "./Network.ts";
 import { withSemcraft } from "./semcraftContext.ts";
-import { Terrain } from "./entities/Terrain.ts";
+import { HEIGHT, Terrain, WIDTH } from "./entities/Terrain.ts";
 import { ForPlayer } from "./components/ForPlayer.ts";
+import { Character } from "./entities/Character.ts";
 
 export class Semcraft extends Game {
   readonly isSemcraft = true;
@@ -81,6 +82,14 @@ export class Semcraft extends Game {
       id: data.connection,
       username: data.username,
     });
+
+    const character = new Character({
+      x: (this.random() - 0.5) * WIDTH,
+      y: (this.random() - 0.5) * HEIGHT,
+      owner: player,
+    });
+
+    this.graphics.panTo(character.position);
 
     return player;
   }

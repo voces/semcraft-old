@@ -7,3 +7,5 @@ declare global {
 }
 
 globalThis.game = new Semcraft(new Network());
+
+window.oncontextmenu = (e) => e.preventDefault();
